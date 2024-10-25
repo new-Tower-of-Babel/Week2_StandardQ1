@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     // [구현사항 1] 정적 필드 정의
     private static QuestManager instance;
+    public List<EncounterQuestDataSO> encounterQuests;
+    public List<MonsterQuestDataSO> monsterQuests;
     // [구현사항 2] 정적 프로퍼티 정의
     public static QuestManager Instance
     {
@@ -31,6 +34,12 @@ public class QuestManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+    private void Start()
+    {
+        foreach (var quest in encounterQuests)
+        {
         }
     }
 }
