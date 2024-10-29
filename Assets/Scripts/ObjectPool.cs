@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -12,12 +11,11 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject gameObject = Instantiate(prefab);
-            gameObject.SetActive(false);
-            pool.Add(gameObject);
+            GameObject obj = Instantiate(prefab);
+            obj.SetActive(false);
+            pool.Add(obj);
         }
     }
-
     public GameObject Get()
     {
         foreach (GameObject go in pool)
@@ -31,12 +29,10 @@ public class ObjectPool : MonoBehaviour
         gameObject.SetActive(false );
         pool.Add(gameObject);
         return gameObject;
-        // 꺼져있는 게임오브젝트를 찾아 active한 상태로 변경하고 return 한다.
     }
 
     public void Release(GameObject obj)
     {
         obj.SetActive(false );
-        // 게임오브젝트를 deactive한다.
     }
 }
